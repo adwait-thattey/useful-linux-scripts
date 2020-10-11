@@ -84,6 +84,31 @@ pyvenv_start() {
 
 }
 
+pyvenv_list() {
+    ls $PYVENV_DIR | grep -v '.tar.gz$'
+}
+
+pyvenv_delete() {
+if [ $# -lt 1 ]; then
+        echo "Usage: source pyvenv delete <name of virtual environment>"
+            
+    else
+
+        vir_path=$PYVENV_DIR/$1
+        echo $vir_path
+        
+        if [ ! -d $vir_path ]; then
+            echo "Virtual Environment of this name does not exist "     
+            
+        else
+            echo "Compressing the environment in a $PYVENV_DIR/$1.tar.gz for future use. Delete the tarball to permanantly delete"
+            tar -czf $PYVENV_DIR/$1.tar.gz $vir_path
+            echo "Deleting environment"
+            rm -r $vir_path
+        fi
+    fi
+}
+
 
 if [ $# -lt 1 ]; then
     pyvenv_help
@@ -99,6 +124,12 @@ elif [ $1 == "create" ]; then
 
 elif [ $1 == "init" ]; then
     pyvenv_init "${@:2}"
+
+elif [ $1 == "list" ]; then
+    pyvenv_list
+
+elif [ $1 == "delete" ]; then
+    pyvenv_delete "${@:2}"
 
 else 
     pyvenv_help
