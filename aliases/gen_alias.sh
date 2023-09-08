@@ -12,9 +12,6 @@ for key in "${!alias_dict[@]}"
 do
     cat >>./aliases.sh << EOL
 
-# params=()
-#     for i; do params+="\${i@Q} "; done;
-
 $key() {
     
     echo "${alias_dict[$key]}" "\$@"
@@ -24,6 +21,19 @@ $key() {
 
 EOL
 done
+
+cat >>./aliases.sh << EOLL
+
+gen_git_autocompletions() {
+	. /usr/share/bash-completion/completions/git
+
+	__git_complete ga _git_add
+	__git_complete gck _git_checkout
+}
+
+gen_git_autocompletions
+
+EOLL
 
 sudo cp ./aliases.sh /usr/local/bin/aliases
 

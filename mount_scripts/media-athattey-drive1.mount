@@ -1,0 +1,12 @@
+[Unit]
+Description=Mount Drive 1 at /media/athattey/drive1
+
+[Mount]
+What=/dev/disk/by-uuid/0e6eef09-aec4-4682-b436-64ad2a1fd9d2
+Where=/media/athattey/drive1
+Type=ext4
+Options=defaults
+
+[Install]
+WantedBy=multi-user.target
+

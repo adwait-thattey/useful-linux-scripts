@@ -1,0 +1,12 @@
+[Unit]
+Description=Mount Drive 2 at /media/athattey/drive2
+
+[Mount]
+What=/dev/disk/by-uuid/b347132f-b1ae-48d5-8098-9007b84e3713
+Where=/media/athattey/drive2
+Type=ext4
+Options=defaults
+
+[Install]
+WantedBy=multi-user.target
+

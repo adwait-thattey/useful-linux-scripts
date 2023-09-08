@@ -3,14 +3,14 @@ declare -A alias_dict
 alias_dict=(
     
     # general commands alias
-    ["ll"]="ls -l"
+    # ["ll"]="ls -l"
     
 
     # cd alias
-    ["cdad"]="cd $DRIVE_ADWAIT"
-    ["cdsec"]="cd $DRIVE_SECONDRY"
-    ["cdprj"]="cd $DIR_PROJECTS"
-    ["cdstudy"]="cd $DIR_STUDY"
+    ["cdfp"]="cd /media/athattey/bdcfastpass-2/"
+    # ["cdsec"]="cd $DRIVE_SECONDRY"
+    # ["cdprj"]="cd $DIR_PROJECTS"
+    # ["cdstudy"]="cd $DIR_STUDY"
 
     
     # go alias
@@ -33,25 +33,26 @@ alias_dict=(
     ["grbc"]="git rebase --continue"
     ["gp"]="git push"
     ["gpf"]="git push --force-with-lease"
-
+    ["gbr"]="git branch"
+    ["gcmme"]="git commit --allow-empty -m"
     
-    #docker alias
-    ["drps"]="docker ps"
-    ["drpsa"]="docker ps -a"
-    ["drst"]="docker start"
-    ["drsp"]="docker stop"
-    ["drex"]="docker exec"
-    ["drexit"]="docker exec -it"
-    ["drl"]="docker logs"
-    ["drlf"]="docker logs -f"
+    # #docker alias
+    # ["drps"]="docker ps"
+    # ["drpsa"]="docker ps -a"
+    # ["drst"]="docker start"
+    # ["drsp"]="docker stop"
+    # ["drex"]="docker exec"
+    # ["drexit"]="docker exec -it"
+    # ["drl"]="docker logs"
+    # ["drlf"]="docker logs -f"
 
-    #docker-compose alias
-    ["drcbd"]="docker-compose build"
-    ["drcup"]="docker-compose up"
-    ["drcdn"]="docker-compose down"
-    ["drcst"]="docker-compose start"
-    ["drcsp"]="docker-compose stop"
-    ["drcl"]="docker-compose logs"
-    ["drclf"]="docker-compose logs -f"
+    # #docker-compose alias
+    # ["drcbd"]="docker-compose build"
+    # ["drcup"]="docker-compose up"
+    # ["drcdn"]="docker-compose down"
+    # ["drcst"]="docker-compose start"
+    # ["drcsp"]="docker-compose stop"
+    # ["drcl"]="docker-compose logs"
+    # ["drclf"]="docker-compose logs -f"
 
 )
