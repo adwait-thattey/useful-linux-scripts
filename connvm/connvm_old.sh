@@ -1,6 +1,6 @@
 #!/bin/bash
-ATHATTEYPASS="WhoIsTheAdmin?"
-ROOTPASS="WhoIsTheAdmin?"
+ATHATTEYPASS="???"
+ROOTPASS="???"
 
 export SSHPASS=$ATHATTEYPASS
 
