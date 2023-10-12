@@ -1,0 +1,72 @@
+#!/usr/bin/expect -f
+set timeout -1
+
+# -- read the custom prompt file
+set file [open "/usr/local/bin/connvm_start_script.sh" r]
+set lines [split [read $file] "\n"]
+close $file
+
+# --
+# -- comma	nd line arguments to our scripts
+set ip [lindex $argv 0]
+set user root
+set pass_prompt true
+if {[llength $argv] > 1} {
+    set user_input [lindex $argv 1]
+    if {$user_input eq "np"} {
+        set pass_prompt false
+    } else {
+       set user [lindex $argv 1]
+    }
+}
+
+if {[llength $argv] > 2} {
+    set user_input [lindex $argv 2]
+    if {$user_input eq "np"} {
+        set pass_prompt false
+    } else {
+       set user [lindex $argv 2]
+    }
+}
+
+set set_passwords $env(vm_passwords)
+set cyber_prompt "*$ "
+set root_prompt "*# "
+spawn ssh-keygen -R \[$ip\]:22
+spawn ssh -p 22 -o StrictHostKeyChecking=no -o NumberOfPasswordPrompts=5 $user@$ip
+set try 0
+expect {
+    "*?assword: " {
+        if { $try >= [llength $set_passwords] } {
+            send_error ">>> wrong passwords\n"
+            exit 1
+        }
+        send [lindex $set_passwords $try]\r
+                incr try
+                exp_continue
+        }
+    "*Could not resolve hostname*" {
+        puts "SSH Agent errored out"
+        exit 1
+        }
+"* " {
+
+        if {$pass_prompt} {
+            foreach line $lines {
+            send "$line\r"
+            # expect "expected_prompt" # Change "expected_prompt" to the actual prompt you expect to see after sending a line
+            }
+        }
+        
+
+        interact
+    }
+
+timeout {
+        send_error ">>> timed out\n"
+        exit 1
+    }
+}
+
+
+
