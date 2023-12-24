@@ -41,8 +41,7 @@ else
 
 fi
 
-DRIVE_ADTHEXT4="$DRIVES_PREFIX/$USER/adthext4"
-
+DRIVE_ADTH="$DRIVES_PREFIX/$USER/adth"
 # if [ -d $DRIVE_ADTHEXT4 ]; then
 #         GOPATH="$DRIVE_ADTHEXT4/manjaromain/go"
 # else

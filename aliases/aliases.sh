@@ -257,6 +257,14 @@ lla() {
 
 
 
+cdadth() {
+    
+    echo "cd /run/media/coderdude/adth" "$@"
+    cd /run/media/coderdude/adth "$@"
+}
+
+
+
 gobd() {
     
     echo "go build" "$@"

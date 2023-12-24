@@ -19,6 +19,7 @@ alias_dict=(
     ["cdsec"]="cd $DRIVE_SECONDRY"
     ["cdprj"]="cd $DIR_PROJECTS"
     ["cdstudy"]="cd $DIR_STUDY"
+    ["cdadth"]="cd $DRIVE_ADTH"
 
     
     # go alias

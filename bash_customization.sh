@@ -1,6 +1,6 @@
 
 set -a
-CURRHOST=$HOSTNAME
+CURRHOST="$HOSTNAME "
 
 set_custom_bash_prompt()
 {
@@ -17,12 +17,12 @@ NORMAL_TEXT="\[$(tput sgr0)\]"
 USER_PROMPT_COLOR=$SEAGREEN
 ROOT_PROMPT_COLOR=$DEEPRED
 
-
-if [[ $CURRHOST == "hostname" ]]; then
+# CURRHOST has additional space
+if [[ $CURRHOST == "hostname " ]]; then
     CURRHOST="UNKNOWN_HOST"
 fi
 
-if [[ $CURRHOST == "inhumans" && $EUID -ne 0 ]]; then
+if [[ $CURRHOST == "inhumans " && $EUID -ne 0 ]]; then
     # Don't need to know host on personal laptop
     CURRHOST=""
 fi
@@ -30,7 +30,7 @@ fi
 if [ "$EUID" -ne 0 ]
 then
 
-    PS1="$YELLOW$CURRHOST$WHITE [$BOLD$BLUE\t $USER_PROMPT_COLOR$USER $ORANGE \W$WHITE] $YELLOW\$$RESET_COLOR "
+    PS1="$YELLOW$CURRHOST$WHITE[$BOLD$BLUE\t $USER_PROMPT_COLOR$USER $ORANGE \W$WHITE] $YELLOW\$$RESET_COLOR "
 
     #PS1="[$BOLD$USER_PROMPT_COLOR$USER$WHITE@$YELLOW$HOSTNAME$ORANGE \W$WHITE] $BLUE\$$RESET_COLOR "
 
@@ -49,7 +49,7 @@ else
     printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' \*
     echo "$(tput sgr0)"
 
-     PS1="$YELLOW$CURRHOST$WHITE [$BOLD$DEEPRED$USER$ORANGE \W$WHITE] $DEEPRED#$RESET_COLOR "
+     PS1="$YELLOW$CURRHOST$WHITE[$BOLD$DEEPRED$USER$ORANGE \W$WHITE] $DEEPRED#$RESET_COLOR "
 #    PS1='[\[${DEEPRED}\]\[\e[1m\]\u\[${WHITE}\]@\[${YELLOW}\]\h \[${ORANGE}\]\W\[${RESET_COLOR}\]]\[\e[0m\]\$ '
 
 fi
