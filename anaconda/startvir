@@ -1,0 +1,31 @@
+#!/bin/bash
+if [ $# -lt 1 ]; then
+	echo "Please specify the name of Virtual Environment you want to start"
+		
+else
+
+    vir_path="/run/media/"
+    
+    if [ -d $vir_path ]; then
+        echo "Using manjaro path"
+        vir_path=/run/media/$USER/Adwait/virtual_environs/$1
+        echo $vir_path
+    else
+        echo "Using ubuntu path"
+        vir_path=/media/$USER/Adwait/virtual_environs/$1
+	echo $vir_path
+	fi
+	
+	if [ ! -d $vir_path ]; then
+		echo "Virtual Environment of this name does not exist "
+		
+		
+	else
+		echo "Starting "$1 "..."
+		source $vir_path/bin/activate
+		echo "If the Virtual Environment does not start , execute startvir by preceding with 'source' or a '.'"
+		echo "Example : "
+		echo ". startvir name_of_VE "
+		echo "source startvir name_of_VE" 
+	fi
+fi

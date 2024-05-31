@@ -1,0 +1,6 @@
+#!/bin/bash
+if [ $# -lt 1 ]; then
+	matlab -nosplash -nodesktop
+else
+	matlab -nosplash -nodesktop -r "run('$1');"
+fi
